@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+  </head>
+  <body>
+    <!--
+    初始Vue:
+    1.想让vue工作,就必须创建一个vue实例,且要传入一个配置对象;
+    2. root容器里的代码要符合html规范,只不过混入一些特殊的Vue语法
+    3. root容器里的代码被称为是 (vue模块)
+    4. Vue实例和容器是一一对应的
+    5. 真实开发中只有一个Vue实例,并且会配合着组件一起使用.
+    6. {{ xxx}}中的xxx要写js表达式,且xxx可以自动读取到data中的所有属性
+    7. 一旦data中的数据发生改变,那么模板中要用到该数据的地方也会自动更新
+
+
+      -->
+    <div id="root">
+      <h1>Hello, {{ name }} , {{ address }} {{Date.now()}}</h1>
+    </div>
+    <script type="text/javascript">
+      Vue.config.productionTip = false;
+      // 创建Vue实例
+      new Vue({
+        el: "#root",
+        data: {
+          name: "vue",
+          address: "ECUT",
+        },
+      });
+    </script>
+  </body>
+</html>
