@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datetest</title>
+    <script>
+      // 没有参数,默认是当前时间
+      var nowDatetime = new Date();
+      console.log(nowDatetime);
+      var nowYear = nowDatetime.getFullYear();
+      var nowMonth = nowDatetime.getMonth() + 1;
+      var nowDate = nowDatetime.getDate() ;
+      var nowWeek = nowDatetime.getDay();
+      console.log(
+        nowYear + "年" + nowMonth + "月" + nowDate + "日" + "星期" + nowWeek
+      );
+      //
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>函数的使用</title>
+    <script>
+      function myFunction(name, age) {
+        alert("first function\n" + "name is " + name + "\n" + "age is " + age);
+      }
+    </script>
+  </head>
+  <body>
+    <!--onclick (用户点击 HTML 元素)  -->
+    <button onclick="myFunction('leiyi548',20);">click it</button> <br />
+    <!--onmouseover (鼠标指针移动到指定的元素上时发生)  -->
+    <button onmouseover="myFunction('leiyi548',20);">onmouseover</button> <br />
+    <!-- onmouseout (用户从一个 HTML 元素上移开鼠标时发生) -->
+    <button onmouseout="myFunction('leiyi548',20);">onmouseout</button> <br />
+    <!--onchange	(HTML 元素改变)  -->
+    <button onchange="myFunction('leiyi548',20);">onchange</button> <br />
+    <!--onkeydown (用户按下键盘按键)      -->
+    <button onkeydown="myFunction('leiyi548',20);">onkeydown</button> <br />
+    <!--onload (浏览器已完成页面的加载) -->
+    <button onload="myFunction('leiyi548',20);">onload</button> <br />
+  </body>
+</html>

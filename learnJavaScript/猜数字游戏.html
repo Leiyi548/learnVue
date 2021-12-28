@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>猜数字游戏</title>
+    <script>
+      //取到两个数之间的随机数
+      function getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      var randomNumber = getRandom(1,10);
+      while(true){
+          var guessingNumber = prompt("请猜数字1-10");
+          if (guessingNumber > randomNumber){
+            alert("你猜大了");
+          }
+          else if (guessingNumber < randomNumber){
+              alert("你猜小")
+          }
+          else{
+              alert("你猜对了")
+              break;
+          }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
