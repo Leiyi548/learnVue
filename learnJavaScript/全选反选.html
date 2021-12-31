@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>全选反选</title>
+    <style>
+      .checkTable {
+        width: 500px;
+        margin: 100px auto;
+        text-align: center;
+        border-collapse: collapse;
+        border: 1px solid #eee;
+        font-size: 14px;
+      }
+      thead tr {
+        background-color: #0099cc;
+      }
+      th {
+        border: 1px solid #eee;
+      }
+      td {
+        background-color: #eef1ee;
+        border: 1px solid #cfd1ce;
+      }
+      .checkTable tr {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <table class="checkTable">
+        <thead>
+          <tr>
+            <th><input type="checkbox" name="" id="" /></th>
+            <th>商品</th>
+            <th>价格</th>
+          </tr>
+        </thead>
+        <tbody id="checkOther">
+          <tr>
+            <td><input type="checkbox" name="" id="" /></td>
+            <td>iPhone8</td>
+            <td>8000</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="" id="" /></td>
+            <td>iPad Pro</td>
+            <td>5000</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="" id="" /></td>
+            <td>iPad Air</td>
+            <td>2000</td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="" id="" /></td>
+            <td>Apple Watch</td>
+            <td>2000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script>
+      checkAllBox = document
+        .querySelector(".checkTable")
+        .querySelector("thead")
+        .querySelector("input");
+      checkOtherBox = document
+        .getElementById("checkOther")
+        .getElementsByTagName("input");
+      checkAllBox.onclick = function () {
+        for (var i = 0; i < checkOtherBox.length; i++) {
+          console.log(checkOtherBox[i]);
+          checkOtherBox[i].checked = this.checked;
+        }
+      };
+      console.log(checkAllBox);
+      for (var i = 0; i < checkOtherBox.length; i++) {
+          checkOtherBox[i].onclick = function () {
+              var flag = true;
+              for (var j = 0; j < checkOtherBox.length; j++) {
+                  if(!checkOtherBox[j].checked){
+                      flag = false;
+                      break;
+                  }
+              }
+              checkAllBox.checked = flag;
+          }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tab栏切换</title>
+    <style>
+      .tab {
+        width: 800px;
+        height: 400px;
+        margin: 100px auto;
+        border: 1px solid blue;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+      ul li {
+        float: left;
+        width: 150px;
+        height: 40px;
+        line-height: 40px;
+        background-color: #eef1ee;
+        list-style: none;
+        border: 1px solid #dcdfdc;
+      }
+      li:hover {
+        background-color: red;
+      }
+      #lastLi {
+        width: 190px;
+      }
+      .item{
+          padding-left: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tab">
+      <ul>
+        <li>商品介绍</li>
+        <li>规格与包装</li>
+        <li>售后保障</li>
+        <li>商品评价</li>
+        <li id="lastLi">手机社区</li>
+      </ul>
+      <div class="tabContent">
+        <div class="item" style="display: none">商品介绍内容</div>
+        <div class="item" style="display: none">规格和包装内容</div>
+        <div class="item" style="display: none">售后保障内容</div>
+        <div class="item" style="display: none">商品评价内容</div>
+        <div class="item" style="display: none">手机社区内容</div>
+      </div>
+    </div>
+    <script>
+      var itemList = document
+        .querySelector(".tabContent")
+        .querySelectorAll(".item");
+      var liList = document.querySelectorAll("li");
+      console.log(itemList);
+      console.log(itemList[0]);
+      for (var i = 0; i < liList.length; i++) {
+        liList[i].setAttribute("index", i);
+        liList[i].onclick = function () {
+          //   itemList[i].style.display = "block";
+          var index = this.getAttribute("index");
+          for (var j = 0; j < itemList.length; j++) {
+            itemList[j].style.display = "none";
+          }
+          itemList[index].style.display = "block";
+        };
+      }
+    </script>
+  </body>
+</html>
