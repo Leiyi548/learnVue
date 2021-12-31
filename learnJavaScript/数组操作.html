@@ -41,6 +41,32 @@
       // (2) shift() 没有参数
       // (3) shift 完毕之后 返回的结果是 删除的那个元素
       // (4) 原数组也会发生变化
+
+      // 三.数组排序和翻转
+      // 1.数组翻转
+      var arrReverse = ['pink','yellow','green'];
+      console.log(arrReverse);
+      arrReverse.reverse();
+      console.log(arrReverse);
+      // 2.数组排序
+      var arrSort = [7,2,4,10];
+      console.log(arrSort);
+      arrSort.sort(function(a,b){
+          return a - b; //升序的顺序排序
+        //   return b-a; // 降序的顺序排序
+      });
+      console.log(arrSort);
+
+      // 数组索引
+      var arrIndexof = ['0','1','2','3','4','5','1'];
+      console.log(arrIndexof);
+      console.log(arrIndexof.indexOf('1'));
+      console.log(arrIndexof.indexOf('6'));
+      console.log(arrIndexof.lastIndexOf('1'));
+
+      var arrStr = [1,2,3];
+      console.log(arrStr.toString()); // 1,2,3
+      console.log(arrStr.join("=")); // 1=2=3
     </script>
   </head>
   <body></body>

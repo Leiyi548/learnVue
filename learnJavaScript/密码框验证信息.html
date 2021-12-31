@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>密码框验证信息</title>
+    <link
+      rel="stylesheet"
+      href="https://at.alicdn.com/t/font_2813176_3zswlrz2ah3.css"
+    />
+    <style>
+      .box {
+        width: 500px;
+        margin: 100px auto;
+      }
+      .box input{
+          width: 438px;
+          height: 50px;
+      }
+      .message {
+        right: 0;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <input type="password" name="" id="pwd" class="ipt" />
+      <p class="message">
+        <i class="iconfont icon-duigou" style="color: #42e86d"></i
+        >&nbsp;不能包含空格<br /><i
+          class="iconfont icon-xinxikongxin"
+          style="color: #a4c9ff"
+        ></i
+        >&nbsp;长度为8-16位<br />
+        <i class="iconfont icon-xinxikongxin" style="color: #a4c9ff"></i
+        >&nbsp;必须包含字母,数字,符号中至少2种<br />
+      </p>
+    </div>
+     
+    <script>
+      var message = document.querySelector(".message");
+      var inputBox = document.querySelector(".ipt");
+      inputBox.onclick = function () {
+        message.style.display = "block";
+      };
+      inputBox.onblur = function () {
+        message.style.display = "block";
+        if (this.value.length == 0) {
+          message.innerHTML =
+            '<i class="iconfont icon-xinxikongxin" style="color: #fe5b5b"></i>&nbsp;密码不能为空';
+        }else if(this.value.length>8 && this.value.length<16){
+            message.innerHTML = 
+            '你是正确的';
+        }
+      };
+    </script>
+  </body>
+</html>

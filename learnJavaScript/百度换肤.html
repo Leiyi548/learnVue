@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>百度换肤</title>
+    <style>
+      body {
+        background: url(https://pic.netbian.com/uploads/allimg/211230/232908-1640878148769a.jpg)
+          no-repeat center top;
+      }
+      .imgList {
+        width: 600px;
+        margin: 100px auto;
+        border: 1px solid #eee;
+        padding: 0px;
+      }
+      .imgList li {
+        float: left;
+        list-style: none;
+      }
+      .imgList li img {
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="imgList">
+      <li>
+        <img
+          src="https://pic.netbian.com/uploads/allimg/211230/232908-1640878148769a.jpg"
+          alt="图片无法显示"
+        />
+      </li>
+      <li>
+        <img
+          src="https://pic.netbian.com/uploads/allimg/211227/235606-16406205667950.jpg"
+          alt="图片无法显示"
+        />
+      </li>
+      <li>
+        <img
+          src="https://pic.netbian.com/uploads/allimg/211227/221447-16406144877815.jpg"
+          alt="图片无法显示"
+        />
+      </li>
+    </ul>
+    <script>
+      var ulList = document.querySelector(".imgList");
+      var imgList = ulList.querySelectorAll("img");
+      for (var i = 0; i < imgList.length; i++) {
+        imgList[i].onclick = function () {
+          console.log(this.src);
+          document.body.style.backgroundImage = 'url('+this.src+')';
+        };
+      }
+    </script>
+  </body>
+</html>
