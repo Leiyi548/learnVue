@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>拖动模态框</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/style.css" rel="stylesheet" />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      .login-header {
+        width: 100%;
+        text-align: center;
+        height: 30px;
+        font-size: 24px;
+        line-height: 30px;
+      }
+      ul,
+      li,
+      ol,
+      dl,
+      dt,
+      dd,
+      div,
+      p,
+      span,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      a {
+        padding: 0;
+        margin: 0;
+      }
+      .login {
+        display: none;
+        width: 512px;
+        height: 280px;
+        position: fixed;
+        border: #ebebeb solid 1px;
+        left: 50%;
+        top: 50%;
+        background-color: #fff;
+        box-shadow: 0px 0px 20px #ddd;
+        z-index: 9999;
+        /* CSStransform属性允许你旋转，缩放，倾斜或平移给定元素。这是通过修改CSS视觉格式化模型的坐标空间来实现的。          */
+        transform: translate(-50%, -50%);
+      }
+
+      .login-title {
+        width: 100%;
+        margin: 10px 0px 0px 0px;
+        text-align: center;
+        height: 40px;
+        font-size: 18px;
+        position: relative;
+        /*cursor CSS 属性设置光标的类型（如果有），在鼠标指针悬停在元素上时显示相应样式。  */
+        cursor: move;
+      }
+
+      .login-input-content {
+        margin-top: 20px;
+      }
+      .login-button {
+        width: 50%;
+        margin: 30px auto 0px auto;
+        line-height: 40px;
+        font-size: 14px;
+        border: #ebebeb 1px solid;
+        text-align: center;
+      }
+      a {
+        text-decoration: none;
+        color: red;
+      }
+      .login-bg {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.3);
+      }
+      .login-button a {
+        display: block;
+      }
+      .login-input input.list-input {
+        float: left;
+        line-height: 35px;
+        height: 35px;
+        width: 350px;
+        border: #ebebeb 1px solid;
+        /*text-indent 属性能定义一个块元素首行文本内容之前的缩进量。*/
+        text-indent: 5px;
+      }
+      .login-input {
+        overflow: hidden;
+        margin: 0px 0px 20px 0px;
+      }
+      .login-input label {
+        float: left;
+        width: 90px;
+        padding-right: 10px;
+        line-height: 35px;
+        height: 35px;
+        font-size: 14px;
+      }
+      .login-title span {
+        position: absolute;
+        font-style: 12px;
+        right: -20px;
+        top: -30px;
+        background: #fff;
+        border: blue solid 1px;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-header">
+      <a id="link" href="javascript:;">点击,弹出登录框</a>
+    </div>
+    <div id="login" class="login">
+      <div id="title" class="login-title">
+        登录会员
+        <span
+          ><a id="closeBtn" class="close-login" href="javascript:void(0);"
+            >关闭</a
+          ></span
+        >
+      </div>
+      <div class="login-input-content">
+        <div class="login-input">
+          <label>用户名</label>
+          <input
+            type="text"
+            placeholder="请输入用户名"
+            name="info[username]"
+            id="username"
+            class="list-input"
+          />
+        </div>
+        <div class="login-input">
+          <label>登录密码: </label>
+          <input
+            type="password"
+            name="info[password]"
+            id="password"
+            class="list-input"
+            placeholder="请输入登录密码"
+          />
+        </div>
+      </div>
+      <div id="loginBtn" class="login-button">
+        <a href="javascript:void(0);" id="login-button-submit">登录会员</a>
+      </div>
+    </div>
+    <div id="bg" class="login-bg"></div>
+    <script>
+      // 1.获取元素
+      var login = document.querySelector(".login");
+      var mask = document.querySelector(".login-bg");
+      var link = document.querySelector("#link");
+      var closeBtn = document.querySelector("#closeBtn");
+      var title = document.querySelector("#title");
+      // 2.点击弹出层这个链接 link 让mask和login显示出来
+      link.addEventListener("click", function () {
+        mask.style.display = "block";
+        login.style.display = "block";
+      });
+      // 3.点击closeBtn 就隐藏 mask和login
+      closeBtn.addEventListener("click", function () {
+        mask.style.display = "none";
+        login.style.display = "none";
+      });
+      // 4.开始拖动模态框
+      // (1) 当我们鼠标按下,就获得鼠标在盒子内的坐标
+      title.addEventListener("mousedown", function (e) {
+        var x = e.pageX - login.offsetLeft;
+        var y = e.pageY - login.offsetTop;
+        // (2) 鼠标移动的时候,把鼠标在页面中的坐标减去鼠标在合资内的坐标就是模态框的left和top值
+        document.addEventListener("mousemove", move);
+        function move(e) {
+          login.style.left = e.pageX - x + "px";
+          login.style.top = e.pageY - y + "px";
+        }
+        // (3) 鼠标弹起,就让鼠标移动事件移除
+        document.addEventListener("mouseup", function () {
+          document.removeEventListener("mousemove", move);
+        });
+      });
+    </script>
+  </body>
+</html>
