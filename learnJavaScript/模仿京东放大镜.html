@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模仿京东放大镜</title>
+    <style>
+      .preview_wrap {
+        width: 400px;
+        height: 590;
+      }
+      .preview_img {
+        position: relative;
+        height: 398px;
+        border: 1px solid #ccc;
+      }
+
+      .mask {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300px;
+        height: 300px;
+        background: #fede4f;
+        opacity: 0.5;
+        cursor: grab;
+      }
+
+      .big {
+        display: none;
+        position: absolute;
+        left: 410px;
+        top: 0px;
+        width: 500px;
+        height: 500px;
+        background-color: pink;
+        z-index: 999;
+        border: 1px solid #ccc;
+        overflow: hidden;
+      }
+      .big img {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="preview_wrap">
+      <div class="preview_img">
+        <img
+          src="https://gitee.com/gu-shenwei666/blogimg/raw/master/image/20220127160421.png"
+          alt=""
+        />
+        <div class="mask"></div>
+        <div class="big">
+          <img
+            src="https://gitee.com/gu-shenwei666/blogimg/raw/master/image/20220127160513.png"
+            alt=""
+            class="bigImg"
+          />
+        </div>
+      </div>
+    </div>
+    <script>
+      // 当页面加载的时候引入我们的js
+      window.addEventListener("load", function () {
+        var preview_img = document.querySelector(".preview_img");
+        var mask = document.querySelector(".mask");
+        var big = document.querySelector(".big");
+        // 1.当我们鼠标经过 preview_img就显示和隐藏mask遮挡层和big大盒子
+        preview_img.addEventListener("mouseover", function () {
+          mask.style.display = "block";
+          big.style.display = "block";
+        });
+        preview_img.addEventListener("mouseout", function () {
+          mask.style.display = "none";
+          big.style.display = "none";
+        });
+        // 2.鼠标移动黄色盒子跟着鼠标走
+        preview_img.addEventListener("mousemove", function (e) {
+          var x = e.pageX - this.offsetLeft;
+          var y = e.pageY - this.offsetTop;
+          // console.log(x, y);
+          var maskX = x - mask.offsetWidth / 2;
+          var maskY = y - mask.offsetHeight / 2;
+          // 如果x坐标小于0就让他停留在0的位置
+          var maskMax = preview_img.offsetWidth - mask.offsetWidth;
+          if (maskX <= 0) {
+            maskX = 0;
+          } else if (maskX >= maskMax) {
+            maskX = maskMax;
+          }
+          if (maskY <= 0) {
+            maskY = 0;
+          } else if (maskY >= maskMax) {
+            maskY = maskMax;
+          }
+          mask.style.left = maskX + "px";
+          mask.style.top = maskY + "px";
+          // 显示大图片
+          var bigImg = document.querySelector(".bigImg");
+          // 大图片最大移动距离
+          var bigMax = bigImg.offsetWidth - big.offsetWidth;
+          // 大图片的移动距离 X Y
+          var bigX = (maskX * bigMax) / maskMax;
+          var bigY = (maskY * bigMax) / maskMax;
+          bigImg.style.left = -bigX + "px";
+          bigImg.style.top = -bigY + "px";
+        });
+      });
+      // add some keybinding
+    </script>
+  </body>
+</html>

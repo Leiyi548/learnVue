@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>offset学习</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .father {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      margin: 150px;
+      position: relative;
+    }
+
+    .son {
+      width: 100px;
+      height: 100px;
+      background-color: green;
+      position: absolute;
+      top: 50px;
+      right: 50px;
+      cursor: move;
+    }
+  </style>
+  <body>
+    <div class="father">
+      <div class="son"></div>
+    </div>
+    <script>
+      // 获得元素
+      var father = document.querySelector(".father");
+      var son = document.querySelector(".son");
+      // 获得坐标
+      console.log("father.offsetTop:" + father.offsetTop);
+      console.log("father.offsetLeft:" + father.offsetLeft);
+      // 它以带有定位的父亲为准,如果没有父亲或者没有定位,则以body为准
+      console.log("son.offsetTop:" + son.offsetTop);
+      console.log("son.offsetLeft:" + son.offsetLeft);
+      // 获得宽度 (包含border 和 padding)
+      console.log(father.offsetWidth);
+      console.log(father.offsetHeight);
+      son.addEventListener("click", function (e) {
+        // console.log(e.pageX);
+        // console.log(e.pageY);
+        var x = e.pageX - father.offsetLeft - son.offsetLeft;
+        console.log(x);
+      });
+    </script>
+  </body>
+</html>
