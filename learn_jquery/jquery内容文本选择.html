@@ -4,25 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>test01</title>
-    <script src="../js/jquery-3.6.0.min.js"></script>
+    <title>jquery内容文本选择</title>
     <style>
       div {
         width: 200px;
         height: 200px;
         background-color: pink;
       }
-      a {
-        display: block;
-      }
     </style>
+    <script src="../js/jquery-3.6.0.min.js"></script>
   </head>
   <body>
-    <div><a href="#">a</a><a href="#">b</a><a href="#">c</a></div>
+    <div>
+      <span>我是内容</span>
+    </div>
+    <input type="text" value="请输入内容">
     <script>
-      // $(function(){
-      //   $('div').hide();
-      // })
+      console.log($("div").html());
+      $("div").html("123");
+      $("input").val("123")
     </script>
   </body>
 </html>

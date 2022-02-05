@@ -112,5 +112,15 @@
         </ul>
       </li>
     </ul>
+    <script>
+      $(function(){
+        $(".nav>li").mouseover(function(){
+          $(this).children("ul").show();
+        });
+        $(".nav>li").mouseout(function(){
+          $(this).children("ul").hide();
+        });
+      })
+    </script>
   </body>
 </html>

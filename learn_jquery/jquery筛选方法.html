@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jquery筛选方法</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <ol>
+      <li>我是ol 的li</li>
+      <li>我是ol 的li</li>
+      <li class="item">我是ol 的li</li>
+      <li>我是ol 的li</li>
+      <li>我是ol 的li</li>
+      <li>我是ol 的li</li>
+    </ol>
+    <ul>
+      <li>我是ol 的li</li>
+      <li>我是ol 的li</li>
+      <li>我是ol 的li</li>
+      <li>我是ol 的li</li>
+      <li>我是ol 的li</li>
+      <li>我是ol 的li</li>
+    </ul>
+    <div class="current">俺有current</div>
+    <div>俺木有current</div>
+    <script>
+      $(function () {
+        $("ol .item").siblings("li").css("color", "blue");
+        var index = 2;
+        $("ul li:eq(2)").css("color", "green");
+        $("ul li").eq(index).css("color","red");
+        console.log($("div:first").hasClass('current'));
+        console.log($("div:last").hasClass('current'));
+      });
+    </script>
+  </body>
+</html>
