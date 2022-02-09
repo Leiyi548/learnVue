@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.灯泡案例</title>
+    <style>
+      div {
+        margin: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <img
+        src="../images/dark_lightBlub.gif"
+        id="lightBlub"
+        onclick="changeImage()"
+      />
+      <p>点击灯泡就可以打开或关闭这个灯泡</p>
+    </div>
+    <script>
+      function changeImage() {
+        const lightBlub = document.getElementById("lightBlub");
+        if (lightBlub.src.match("dark")) {
+          lightBlub.src = "../images/light_lightBlub.gif";
+        } else {
+          lightBlub.src = "../images/dark_lightBlub.gif";
+        }
+      }
+    </script>
+  </body>
+</html>
